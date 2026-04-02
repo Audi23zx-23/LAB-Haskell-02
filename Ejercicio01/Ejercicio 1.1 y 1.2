@@ -1,0 +1,31 @@
+miLenght :: [a] -> Int
+miLenght [] = 0
+miLenght (_:xs) = 1 + miLenght xs
+
+miLast :: [a] -> a
+miLast [x] = x
+miLast (_:xs) = miLast xs
+
+duplicar :: [Int] -> [Int]
+duplicar [] = []
+duplicar (x:xs) = x * 2 : duplicar xs
+
+eliminarPares :: [Int] -> [Int]
+eliminarPares [] = []
+eliminarPares (x:xs)
+    | even x = eliminarPares xs
+    | otherwise = x : eliminarPares xs
+
+-----------------------------------------------
+
+miLength' :: [a] -> Int
+miLength' = foldl (\acc _ -> acc + 1) 0 
+
+miLast' :: [a] -> a
+miLast' = foldl1 (\_ x -> x)
+
+duplicar' :: [Int] -> [Int]
+duplicar' = map (* 2) 
+
+eliminarPares' :: [Int] -> [Int]
+eliminarPares' = filter odd 
